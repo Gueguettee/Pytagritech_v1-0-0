@@ -15,6 +15,7 @@ class capteur(db.Model):
     def __repr__(self):
         return '<Capteur %r>' %self.num
 
+
 #mettre a jour la base de donnée, créer un nouveau tableau taper dans terminal : 
 # python3
 #from base import db
