@@ -3,6 +3,7 @@
 
 A faire :
 
-ajouter centrage map en fonction capteur 0
-agrandir map
 faire script python pour quadrillage champ
+
+gestion erreur en cas de 0 capteur sur map
+gestion erreur no int no float dans add capteur

@@ -52,18 +52,18 @@
           <script>
             function myMap() {
               const myLatLng = { 
-                lat: parseInt('{{ liste_cap.0.latitude }}'), 
-                lng: parseInt('{{ liste_cap.0.longitude }}') 
+                lat: parseFloat('{{ liste_cap.0.latitude }}'), 
+                lng: parseFloat('{{ liste_cap.0.longitude }}') 
               };
               const map = new google.maps.Map(document.getElementById("googleMap"), {
-                zoom: 4,
+                zoom: 18,
                 center: myLatLng,
               });
   
               '{% for cap in liste_cap %}'
                 var LatLng={
-                  lat:parseInt('{{ cap.latitude }}'),
-                  lng:parseInt('{{ cap.longitude }}')
+                  lat:parseFloat('{{ cap.latitude }}'),
+                  lng:parseFloat('{{ cap.longitude }}')
                 };
                 new google.maps.Marker({
                   position: LatLng,
