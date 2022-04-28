@@ -23,7 +23,8 @@ def ajouter_capteur():
 
 @app.route('/map', methods = ['POST', 'GET'])
 def map():
-    return render_template('map.html')
+    liste_cap = capteur.query.order_by(capteur.num).all()
+    return render_template('map.html', liste_cap = liste_cap)
 
 
 @app.route('/table', methods = ['POST', 'GET'])
