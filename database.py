@@ -1,22 +1,22 @@
 from base import *
 
-class capteur(db.Model):
+class sensor(db.Model):
     num = db.Column(db.Integer, primary_key = True)
     id = db.Column(db.Integer)
-    latitude = db.Column(db.Float)
-    longitude = db.Column(db.Float)
+    lat = db.Column(db.Float)
+    long = db.Column(db.Float)
 
 
-    def __init__(self, id, latitude, longitude):
+    def __init__(self, id, lat, long):
         self.id = id
-        self.latitude = latitude
-        self.longitude = longitude
+        self.lat = lat
+        self.long = long
 
     def __repr__(self):
-        return '<Capteur %r>' %self.num
+        return '<Sensor %r>' %self.num
 
 
-#mettre a jour la base de donnée, créer un nouveau tableau taper dans terminal : 
-# python3
+#To create or upload database :
+#python3
 #from base import db
 #db.create_all()

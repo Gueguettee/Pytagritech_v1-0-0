@@ -26,7 +26,7 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">
                   <span data-feather="home"></span>
-                  Add a sensor
+                  Add sensor
                 </a>
               </li>
               <li class="nav-item">
@@ -52,23 +52,28 @@
           <script>
             function myMap() {
               const myLatLng = { 
-                lat: parseFloat('{{ liste_cap.0.latitude }}'), 
-                lng: parseFloat('{{ liste_cap.0.longitude }}') 
+                lat: parseFloat('{{ list_sensor.0.lat }}'), 
+                lng: parseFloat('{{ list_sensor.0.long }}') 
               };
               const map = new google.maps.Map(document.getElementById("googleMap"), {
                 zoom: 18,
                 center: myLatLng,
               });
   
-              '{% for cap in liste_cap %}'
+              '{% for sensor in list_sensor %}'
                 var LatLng={
-                  lat:parseFloat('{{ cap.latitude }}'),
-                  lng:parseFloat('{{ cap.longitude }}')
+                  lat:parseFloat('{{ sensor.lat }}'),
+                  lng:parseFloat('{{ sensor.long }}')
                 };
-                new google.maps.Marker({
+                marker = new google.maps.Marker({
                   position: LatLng,
                   map,
-                  title: '{{ cap.id }}',
+                  title: '{{ sensor.id }}',
+                  url: "table",
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                  window.location.href = marker.url;
                 });
               '{%endfor%}'
             };

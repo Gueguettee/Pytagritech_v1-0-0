@@ -2,44 +2,45 @@ from base import *
 from database import *
 
 @app.route('/', methods = ['POST', 'GET'])
-def ajouter_capteur():
+def Add_sensor():
     if request.method == 'POST':
-        id_recup = int(request.form['ajouter_id'])
-        latitude_recup = float(request.form['ajouter_lat'])
-        longitude_recup = float(request.form['ajouter_long'])
-        #gestion d'erreur...
-        nouveau_capteur = capteur(id = id_recup, latitude = latitude_recup, longitude = longitude_recup)
+        id_recover = int(request.form['add_id'])
+        lat_recover = float(request.form['add_lat'])
+        long_recover = float(request.form['add_long'])
+        #Error management
+        new_sensor = sensor(id = id_recover, lat = lat_recover, long = long_recover)
         try:
-            db.session.add(nouveau_capteur)
+            db.session.add(new_sensor)
             db.session.commit()
             return redirect('/')
         except:
-            flash('Veuillez réessayer')
+            flash("Retry")
             print("error")
             return redirect('/')        
     else:
-        return render_template('ajouter_capteur.html')
+        return render_template('add_sensor.html')
 
 
 @app.route('/map', methods = ['POST', 'GET'])
-def map():
-    liste_cap = capteur.query.order_by(capteur.num).all()
-    return render_template('map.html', liste_cap = liste_cap)
+def Map():
+    list_sensor = sensor.query.order_by(sensor.num).all()
+    return render_template('map.html', list_sensor = list_sensor)
 
 
 @app.route('/table', methods = ['POST', 'GET'])
-def table():
+def Table():
     if request.method == 'POST':
-        num_cap_supprimer = int(request.form['supprimer'])
-        cap_supprimer = capteur.query.get_or_404(num_cap_supprimer)
-        #gestion erreur...
-        db.session.delete(cap_supprimer)
+        num_to_delete = int(request.form['delete'])
+        sensor_to_delete = sensor.query.get_or_404(num_to_delete)
+        #Error management
+        db.session.delete(sensor_to_delete)
         db.session.commit()
         return redirect('/table')
     else:
-        liste_cap = capteur.query.order_by(capteur.num).all()
-        return render_template('table.html', liste_cap = liste_cap)
+        list_sensor = sensor.query.order_by(sensor.num).all()
+        return render_template('table.html', list_sensor = list_sensor)
 
 
 if __name__ == "__main__":
     app.run()
+    

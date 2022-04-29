@@ -15,10 +15,10 @@ N_TOT = N_COLUMN * N_LINE
 for line in range(0,N_LINE):
     for column in range(0,N_COLUMN):
 
-        new_sensor = capteur(
+        new_sensor = sensor(
             id = line*10+column, 
-            latitude = LAT0-GAP*line, 
-            longitude = LONG0+GAP*column)
+            lat = LAT0-GAP*line, 
+            long = LONG0+GAP*column)
 
         try:
             db.session.add(new_sensor)
