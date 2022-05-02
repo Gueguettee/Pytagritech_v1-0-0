@@ -40,6 +40,9 @@ def Table():
         list_sensor = sensor.query.order_by(sensor.num).all()
         return render_template('table.html', list_sensor = list_sensor)
 
+#@app.route('/plot', methods = ['POST', 'GET'])
+#def Plot_sensor():
+
 
 if __name__ == "__main__":
     app.run()
