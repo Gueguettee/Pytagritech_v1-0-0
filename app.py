@@ -38,7 +38,6 @@ def Table():
 #@app.route('/plot', methods = ['POST', 'GET'])
 #def Plot_sensor():
 
-<<<<<<< HEAD
 @app.route('/data', methods = ['POST'])
 def Receive_data():
     id_recover = int(request.args.get['id'])
@@ -53,8 +52,6 @@ def Receive_data():
         print("error")
     return None
 
-=======
->>>>>>> 40f50660562ead459f31ac0914c55accf4cf4358
 
 if __name__ == "__main__":
     # run app in debug mode on port 5000
