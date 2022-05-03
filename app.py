@@ -1,3 +1,4 @@
+import string
 from base import *
 from database import *
 
@@ -39,6 +40,26 @@ def Table():
     else:
         list_sensor = db.session.query(sensor).order_by(sensor.id).all()
         return render_template('table.html', list_sensor = list_sensor)
+
+
+#@app.route('/plot', methods = ['POST', 'GET'])
+#def Plot_sensor():
+
+
+@app.route('/data', methods = ['POST'])
+def Receive_data():
+    id_recover = int(request.form['id'])
+    time_recover = str(request.form['time'])
+    data_recover = float(request.form['data'])
+    new_sensor_data = data_sensor(id = id_recover, time = time_recover, data = data_recover)
+    try:
+        db.session.add(new_sensor_data)
+        db.session.commit()
+        return "ok"
+    except:
+        flash("Retry")
+        print("error")
+        return "nok"
 
 
 if __name__ == "__main__":
