@@ -1,10 +1,14 @@
 # Pytagritech_v1-0-0
 
+Requirements :
+sqlalchemy
+
 
 A faire :
 
 gestion erreur en cas de 0 capteur sur map
 gestion erreur no int no float dans add capteur
+gestion erreur en cas d'ajout capteur déjà existant
 
 
 stockage site sur serveur aws (ou andeol.demierre@hefr.ch)

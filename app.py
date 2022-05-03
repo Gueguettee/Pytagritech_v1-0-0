@@ -23,21 +23,21 @@ def Add_sensor():
 
 @app.route('/map', methods = ['POST', 'GET'])
 def Map():
-    list_sensor = sensor.query.order_by(sensor.num).all()
+    list_sensor = sensor.query.order_by(sensor.id).all()
     return render_template('map.html', list_sensor = list_sensor)
 
 
 @app.route('/table', methods = ['POST', 'GET'])
 def Table():
     if request.method == 'POST':
-        num_to_delete = int(request.form['delete'])
-        sensor_to_delete = sensor.query.get_or_404(num_to_delete)
+        id_to_delete = int(request.form['delete'])
+        sensor_to_delete = sensor.query.get_or_404(id_to_delete)
         #Error management
         db.session.delete(sensor_to_delete)
         db.session.commit()
         return redirect('/table')
     else:
-        list_sensor = sensor.query.order_by(sensor.num).all()
+        list_sensor = db.session.query(sensor).order_by(sensor.id).all()
         return render_template('table.html', list_sensor = list_sensor)
 
 

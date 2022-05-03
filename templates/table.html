@@ -63,11 +63,10 @@
                 {% for sensor in list_sensor %}
                 <form action="/table" method="POST">
                   <tr>
-                    <!--<td>{{ sensor.num }}</td>-->
                     <td>{{ sensor.id }}</td>
                     <td>{{ sensor.lat }}</td>
                     <td>{{ sensor.long }}</td>
-                    <td><button  type = "submit" class = "close" aria-label="Close" id="delete" name = "delete" value = "{{ sensor.num }}">
+                    <td><button  type = "submit" class = "close" aria-label="Close" id="delete" name = "delete" value = "{{ sensor.id }}">
                       <span aria-hidden="true">&times;</span>
                     </button></td> 
                   </tr>

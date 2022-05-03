@@ -1,8 +1,7 @@
 from base import *
 
 class sensor(db.Model):
-    num = db.Column(db.Integer, primary_key = True)
-    id = db.Column(db.Integer)
+    id = db.Column(db.Integer, primary_key = True)
     lat = db.Column(db.Float)
     long = db.Column(db.Float)
 
@@ -13,7 +12,7 @@ class sensor(db.Model):
         self.long = long
 
     def __repr__(self):
-        return '<Sensor %r>' %self.num
+        return '<Sensor %r>' %self.id
 
 
 #To create or upload database :
