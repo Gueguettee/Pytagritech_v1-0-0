@@ -1,7 +1,20 @@
 # Pytagritech_v1-0-0
 
-Requirements :
-sqlalchemy
+Ressources : 
+https://flask-sqlalchemy.palletsprojects.com/en/2.x/
+
+
+------- Configuration ----------
+
+python -m pip install --upgrade pip
+pip install flask
+pip install flask-sqlalchemy
+
+Utilisation d'un environnement virtuel :  
+python -m venv .venv  
+.venv\Scripts\activate  
+pip install ...
+
 
 
 A faire :
