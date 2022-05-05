@@ -16,6 +16,9 @@ python -m venv .venv
 pip install ...
 
 
+Accès sur putty :
+/var/pytagritech
+
 
 A faire :
 
