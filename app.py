@@ -41,8 +41,12 @@ def Table():
         return render_template('table.html', list_sensor = list_sensor)
 
 
-#@app.route('/plot', methods = ['POST', 'GET'])
-#def Plot_sensor():
+@app.route('/plot', methods = ['POST', 'GET'])
+def Plot_sensor():
+    if request.method == 'GET':
+        data = int(request.args.get('id'))
+        print(data)
+        return render_template('plot_sensor.html', data = data)
 
 
 @app.route('/data', methods = ['POST'])

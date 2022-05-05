@@ -69,7 +69,7 @@
                   position: LatLng,
                   map,
                   title: '{{ sensor.id }}',
-                  url: "plot_sensor",
+                  url: "plot" + '?id=' + '{{ sensor.id }}',
                 });
 
                 google.maps.event.addListener(marker, 'click', function() {
