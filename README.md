@@ -25,8 +25,6 @@ gestion erreur en cas d'ajout capteur déjà existant
 
 
 stockage site sur serveur aws
-faire une ligne qui envoie du code en continu
 plot graphique capteur
-stocker toute les données des capteurs
 rajouter commentaires en anglais
 ligne de code qui met à jour tout les tant de temps

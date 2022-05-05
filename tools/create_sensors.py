@@ -1,5 +1,7 @@
+import sys
+sys.path.append( './.' )
 from base import *
-from database import *
+from database import sensor
 
 
 N_COLUMN = 10
@@ -24,5 +26,4 @@ for line in range(0,N_LINE):
             db.session.add(new_sensor)
             db.session.commit()
         except:
-            flash('Veuillez réessayer')
             print("error")

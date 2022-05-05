@@ -1,9 +1,10 @@
-from attr import NOTHING
+import sys
+sys.path.append( './.' )
 from base import *
-from database import *
+from database import sensor
 
 
-for num in range(1,1000):
+for num in range(0,1000):
 
     sensor_to_delete = sensor.query.get_or_404(num)
 
