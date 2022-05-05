@@ -1,4 +1,4 @@
-import string
+import datetime
 from base import *
 from database import *
 
@@ -48,21 +48,24 @@ def Table():
 
 @app.route('/data', methods = ['POST'])
 def Receive_data():
+    print(datetime.datetime.today().isoformat())
     id_recover = int(request.form['id'])
+    print(datetime.datetime.today().isoformat())
     time_recover = str(request.form['time'])
+    print(datetime.datetime.today().isoformat())
     data_recover = float(request.form['data'])
+    print(datetime.datetime.today().isoformat())
     new_sensor_data = data_sensor(id = id_recover, time = time_recover, data = data_recover)
+    print(datetime.datetime.today().isoformat())
     try:
+        print(datetime.datetime.today().isoformat())
         db.session.add(new_sensor_data)
+        print(datetime.datetime.today().isoformat())
         db.session.commit()
+        print(datetime.datetime.today().isoformat())
         return "ok"
     except:
         flash("Retry")
         print("error")
         return "nok"
-
-
-if __name__ == "__main__":
-    # run app in debug mode on port 5000
-    app.run(debug=True, port=5000)
     

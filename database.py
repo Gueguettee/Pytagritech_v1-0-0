@@ -26,7 +26,7 @@ class data_sensor(db.Model):
         self.data = data
 
     def __repr__(self):
-        return '<Sensor data %r>' %self.num
+        return '<Sensor data %r>' %self.id
 
 
 #To create or upload database :

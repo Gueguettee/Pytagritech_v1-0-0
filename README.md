@@ -24,7 +24,7 @@ gestion erreur no int no float dans add capteur
 gestion erreur en cas d'ajout capteur déjà existant
 
 
-stockage site sur serveur aws (ou andeol.demierre@hefr.ch)
+stockage site sur serveur aws
 faire une ligne qui envoie du code en continu
 plot graphique capteur
 stocker toute les données des capteurs
