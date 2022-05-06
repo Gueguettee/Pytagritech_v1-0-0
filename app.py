@@ -43,8 +43,11 @@ def Table():
 
 @app.route('/plot', methods = ['POST', 'GET'])
 def Plot_sensor():
+    n_data = 10
     if request.method == 'GET':
-        data = int(request.args.get('id'))
+        id = int(request.args.get('id'))
+        print(id)
+        data = db.session.query(data_sensor).order_by(data_sensor.id).limit(n_data).all()
         print(data)
         return render_template('plot_sensor.html', data = data)
 
