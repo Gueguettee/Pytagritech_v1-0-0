@@ -27,7 +27,5 @@ gestion erreur no int no float dans add capteur
 gestion erreur en cas d'ajout capteur déjà existant
 
 
-stockage site sur serveur aws
-plot graphique capteur
 rajouter commentaires en anglais
 ligne de code qui met à jour tout les tant de temps

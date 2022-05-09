@@ -1,5 +1,6 @@
 from base import *
 
+
 class sensor(db.Model):
     id = db.Column(db.Integer,nullable=False,primary_key = True)
     lat = db.Column(db.Float,nullable=False)
@@ -29,7 +30,10 @@ class data_sensor(db.Model):
         return '<Data sensor : id=%r, time=%s, data=%r>' %(self.id,self.time,self.data)
 
 
-#To create or upload database :
+#To create database :
 #python3
 #from database import *
 #db.create_all()
+
+#to upload database :
+#delete database and recreate it

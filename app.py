@@ -1,6 +1,7 @@
 from base import *
 from database import *
 
+
 @app.route('/', methods = ['POST', 'GET'])
 def Add_sensor():
     if request.method == 'POST':
@@ -47,7 +48,6 @@ def Plot_sensor():
     if request.method == 'GET':
         id = int(request.args.get('id'))
         print(id)
-        #data = db.session.query(data_sensor).order_by(data_sensor.id).limit(n_data).all()
         all_data = db.session.query(data_sensor).filter_by(id = id).limit(n_data).all()
         #all_data.query(data_sensor).order_by(data_sensor.time).all()
         for data in all_data:
