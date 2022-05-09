@@ -22,8 +22,10 @@ for line in range(0,N_LINE):
             lat = LAT0-GAP*line, 
             long = LONG0+GAP*column)
 
-        try:
-            db.session.add(new_sensor)
-            db.session.commit()
-        except:
-            print("error")
+        db.session.add(new_sensor)
+
+try:
+            
+    db.session.commit()
+except:
+    print("error")

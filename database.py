@@ -1,6 +1,9 @@
 from base import *
 
 
+N_DATA = 10
+
+
 class sensor(db.Model):
     id = db.Column(db.Integer,nullable=False,primary_key = True)
     lat = db.Column(db.Float,nullable=False)

@@ -4,12 +4,14 @@ from base import *
 from database import sensor
 
 
-for num in range(0,1000):
+all_sensors = db.session.query(sensor).all()
 
-    sensor_to_delete = sensor.query.get_or_404(num)
+for num in range(0,len(all_sensors)):
 
-    try:
-        db.session.delete(sensor_to_delete)
-        db.session.commit()
-    except:
-        exit()
+    sensor_to_delete = all_sensors[num]
+    db.session.delete(sensor_to_delete)
+
+try:
+    db.session.commit()
+except:
+    exit()
