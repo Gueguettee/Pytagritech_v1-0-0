@@ -11,8 +11,8 @@ link = 'http://localhost:5000/data'
 DATA_MIN = -5
 DATA_MAX = 5
 
-ID = 51
-N_DATA = 1
+ID = 50
+N_DATA = 10
 
 GAP = 0.01
 
