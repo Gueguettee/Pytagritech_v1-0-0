@@ -11,8 +11,8 @@ link = 'http://localhost:5000/data'
 DATA_MIN = -5
 DATA_MAX = 5
 
-ID = 50
-N_DATA = 10
+ID = 10
+N_DATA = 1000
 
 GAP = 0.01
 
@@ -29,6 +29,4 @@ for n in range(0,N_DATA):
 
     request_data = {'id':str(id),'time':str(time),'data':str(data)}
     response = requests.post(link, data=request_data)
-    #requests.get(link,)
-    #requests.post(link,)
     print(response)

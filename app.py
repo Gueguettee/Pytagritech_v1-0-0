@@ -1,5 +1,5 @@
 from base import *
-from database import *
+from database import N_DATA, data_sensor,sensor
 
 
 @app.route('/', methods = ['POST', 'GET'])
@@ -44,11 +44,9 @@ def Table():
 
 @app.route('/plot', methods = ['POST', 'GET'])
 def Plot_sensor():
-    n_data = 10
     if request.method == 'GET':
         id = int(request.args.get('id'))
-        print(id)
-        all_data = db.session.query(data_sensor).filter_by(id = id).limit(n_data).all()
+        all_data = db.session.query(data_sensor).filter_by(id = id).limit(N_DATA).all()
         #all_data.query(data_sensor).order_by(data_sensor.time).all()
         return render_template('plot_sensor.html', data = all_data)
 
@@ -59,7 +57,13 @@ def Receive_data():
     time_recover = str(request.form['time'])
     data_recover = float(request.form['data'])
     new_sensor_data = data_sensor(id = id_recover, time = time_recover, data = data_recover)
+    all_data = db.session.query(data_sensor).filter_by(id = id_recover).all()
     try:
+        if len(all_data) >= N_DATA:
+            num_to_delete = len(all_data) - N_DATA + 1
+            for num in range(0,num_to_delete):
+                data_sensor_to_delete = all_data[num]
+                db.session.delete(data_sensor_to_delete)
         db.session.add(new_sensor_data)
         db.session.commit()
         return "ok"
