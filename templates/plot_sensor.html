@@ -52,16 +52,17 @@
             </div>
             <canvas id="myChart" width="200" height="200"></canvas>
             <script>
-              var X = []
-              var Y = []
-              var data_input = [function datas()
+              var X = [];
+              var Y = [];
+              function recover_data()
               {
                 '{%for data_chart in data %}'
                   X.push('{{data_chart.time}}')
                   Y.push('{{data_chart.data}}')
                 '{%endfor%}'
-              }
-              ];
+              };
+              
+              recover_data();
 
               var ctx = document.getElementById("myChart");
               var myChart = new Chart(ctx, {
