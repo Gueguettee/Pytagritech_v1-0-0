@@ -73,7 +73,7 @@
                 });
 
                 google.maps.event.addListener(marker, 'click', function() {
-                  window.location.href = marker.url;
+                  window.location.href = this.url;
                 });
               '{%endfor%}'
             };

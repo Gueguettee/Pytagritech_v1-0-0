@@ -47,9 +47,13 @@ def Plot_sensor():
     if request.method == 'GET':
         id = int(request.args.get('id'))
         print(id)
-        data = db.session.query(data_sensor).order_by(data_sensor.id).limit(n_data).all()
-        print(data)
-        return render_template('plot_sensor.html', data = data)
+        #data = db.session.query(data_sensor).order_by(data_sensor.id).limit(n_data).all()
+        all_data = db.session.query(data_sensor).filter_by(id = id).limit(n_data).all()
+        #all_data.query(data_sensor).order_by(data_sensor.time).all()
+        for data in all_data:
+            del data.id
+        print(all_data)
+        return render_template('plot_sensor.html', data = all_data)
 
 
 @app.route('/data', methods = ['POST'])

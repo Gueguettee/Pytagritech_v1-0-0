@@ -12,12 +12,12 @@ class sensor(db.Model):
         self.long = long
 
     def __repr__(self):
-        return '<Sensor %r>' %self.id
+        return '<Sensor : id=%r, lat=%r, long=%r>' %(self.id,self.lat,self.long)
 
 
 class data_sensor(db.Model):
-    id = db.Column(db.Integer,db.ForeignKey('sensor.id'),nullable=False,primary_key=True)
-    time = db.Column(db.String(26),nullable=False)
+    id = db.Column(db.Integer,db.ForeignKey('sensor.id'),nullable=False,primary_key=False)
+    time = db.Column(db.String(26),nullable=False,primary_key=True)
     data = db.Column(db.Float)
 
     def __init__(self, id, time, data):
@@ -26,7 +26,7 @@ class data_sensor(db.Model):
         self.data = data
 
     def __repr__(self):
-        return '<Sensor data %r>' %self.id
+        return '<Data sensor : id=%r, time=%s, data=%r>' %(self.id,self.time,self.data)
 
 
 #To create or upload database :

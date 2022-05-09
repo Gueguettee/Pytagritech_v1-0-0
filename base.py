@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, flash, redirect
-from flask_sqlalchemy import SQLAlchemy
+from flask import *
+from flask_sqlalchemy import *
 
 app = Flask (__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
