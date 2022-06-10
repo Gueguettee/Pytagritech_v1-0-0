@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>PagewebAgrotechProject</title>
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+    <header class="navbar navbar-dark sticky-top bg-success flex-md-nowrap p-0 shadow">
+
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Agritech</a>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">
+                  <span data-feather="add_page"></span>
+                  Add sensor
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="map">
+                  <span data-feather="map_page"></span>
+                  Map
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="table">
+                  <span data-feather="table_page"></span>
+                  Table
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="temp_sensor">
+                  <span data-feather=""></span>
+                  Plant sensor
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Add sensor</h1>
+          </div>
+          <form action="/" method="POST">
+            <div class="form-group">
+                <label for="id">ID :</label>
+                <input type="text" class="form-control" name="add_id" id="add_id">
+              </div>
+            <div class="form-group">
+              <label for="lat">Latitude :</label>
+              <input type="text" class="form-control" name="add_lat" id="add_lat">
+            </div>
+            <div class="form-group">
+              <label for="long">Longitude :</label>
+              <input type="text" class="form-control" name="add_long" id="add_long">
+            </div>
+            <button type="submit" class="btn btn-outline-success">Send</button>
+          </form>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>PagewebAgrotechProject</title>
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+<script>
+window.onload = function () {
+
+var dataPoints = [];
+
+var options = {
+	theme: "light2",
+	title: {
+		text: "Live Chart from sensor Data"
+	},
+	data: [{
+		type: "spline",
+		dataPoints: dataPoints
+	}]
+};
+
+$("#chartContainer").CanvasJSChart(options);
+updateData();
+
+// Initial Values
+var xValue = 0;
+var yValue = 10;
+var newDataCount = 6;
+
+function addData(receiveData) {
+	data = receiveData.datas;
+	if (newDataCount != 1) {
+		$.each(data, function (key, value) {
+			dataPoints.push({ x: value[0][0], y: parseFloat(value[1][0]) });
+			xValue++;
+			yValue = parseFloat(value[1][0]);
+		});
+		newDataCount = 1;
+	} else {
+		//dataPoints.shift();
+		for(let i=0; i < data[0].length; i++) {
+			dataPoints.push({ x: data[0][i], y: parseFloat(data[1][i]) });
+			xValue++;
+			yValue = parseFloat(data[1][i]);
+		}
+		
+	}
+	$("#batteryValue").html(receiveData.battery);
+	$("#chartContainer").CanvasJSChart().render();
+	setTimeout(updateData, 400);
+}
+
+function updateData() {
+	// $.getJSON("http://127.0.0.1:5000/temp_sensor?ajax", addData);
+	$.getJSON("http://pytagritech.isc.heia-fr.ch/temp_sensor?ajax", addData);
+}
+
+}
+</script>
+  </head>
+
+  <body>
+
+    <header class="navbar navbar-dark sticky-top bg-success flex-md-nowrap p-0 shadow">
+
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Agritech</a>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">
+                  <span data-feather="add_page"></span>
+                  Add sensor
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="map">
+                  <span data-feather="map_page"></span>
+                  Map
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="table">
+                  <span data-feather="table_page"></span>
+                  Table
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="temp_sensor">
+                  <span data-feather=""></span>
+                  Plant sensor 2
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Plant sensor</h1><div>
+		        Battery : 
+			      <div id="batteryValue"></div>
+		        </div>
+          </div>
+		  
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+            <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
