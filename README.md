@@ -16,10 +16,6 @@ python -m venv .venv
 pip install ...
 
 
-Accès sur putty :
-/var/pytagritech
-
-
 A faire :
 
 gestion erreur en cas de 0 capteur sur map
@@ -28,4 +24,3 @@ gestion erreur en cas d'ajout capteur déjà existant
 
 
 rajouter commentaires en anglais
-ligne de code qui met à jour tout les tant de temps
